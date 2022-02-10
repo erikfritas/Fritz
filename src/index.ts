@@ -12,7 +12,7 @@ const config = JSON.parse(fs.readFileSync('./src/config.json', {encoding: 'utf8'
 const debugId = '556286316077-1600830393@g.us'
 
 async function connectToWhatsApp () {
-    const { state, saveState } = useSingleFileAuthState('./auth_info_multi.json', P({ level: "debug" }))
+    const { state, saveState } = useSingleFileAuthState('./auth_info_multi.json', P({ level: "warn" }))
     const sock = makeWASocket({
         // can provide additional config here
         auth: state,
@@ -40,32 +40,46 @@ async function connectToWhatsApp () {
 
         const id = m.messages[0].key.remoteJid || 'desconhecido 404'
         const nome = m.messages[0].pushName || 'sem nome 404'
-        const ping = `${m.messages[0].duration}` || 'erro ping 999'
 
         if (msg && msg[0] === config.prefix) {
             const cmd: string = msg.substring(1)
             const cmds = {
                 menu: async () => {
                     sock.sendMessage(id, { text: menu(config, nome) })
+                    .then(() => msgs['sent'](msg, id, nome))
+                    .catch(() => msgs['error sent'](msg, id, nome))
                 },
                 oi: async () => {
+                    const opa = 'oops, não vi vc aí, oi'
                     const frases = [
-                        'oi', 'olá', 'oi, como vai?', 'olá, como vai?',
-                        'fala', 'eae', 'eai', 'fala ze', 'que oi que nada, meu nome é ze pikeno'
+                        'olá, como vai?', 'fala meu jovem', 'fala ze',
+                        'que oi que nada, meu nome é ze pikeno',
+                        'que oi crocante, meu nome é ze pikante',
+                        'opa, fala meu jovem',
+                        '"... tem cheiro suvaco de alemão e tal...", '+opa,
+                        '"... vira, agora é minha vez...", '+opa,
+                        '"... caraio que cheiro de transeunte...", '+opa,
+                        '"... tá aqui no meu cu c quer ver?...", '+opa,
+                        '"... e ainda tinha cara de paiaço kkk...", '+opa,
+                        '"... cala boca sua paiaça...", '+opa,
+                        '"... cala boca sua palafita...", '+opa,
+                        '"... cala boca sua bananuda...", '+opa,
+                        '"... falei pro c, é cara de um cuzinho do outro...", '+opa
                     ];
                     sock.sendMessage(id,
                     { text: frases[Math.floor(Math.random() * frases.length)] })
                     .then(() => msgs['sent'](msg, id, nome))
                     .catch(() => msgs['error sent'](msg, id, nome))
                 },
-                ping: async () => {
-                    sock.sendMessage(id, { text: ping })
-                }
+                // GAMES
+                
             }
 
-            if (Object.keys(cmds).includes(cmd)){
+            if (Object.keys(cmds).includes(cmd))
                 Object(cmds)[cmd]()
-            }
+            else
+                sock.sendMessage(id, { text: `ERRO: Comando inexistente` })
+                .then(() => msgs['error sent'](msg, id, nome))
         }
     })
 }

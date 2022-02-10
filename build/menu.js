@@ -1,8 +1,8 @@
-import 'colors'
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+require("colors");
 // 🍟 🌋 🎮 
-
-export default function show({ owner, insta, prefix }: any, nome: string) {
+function show({ owner, insta, prefix }, nome) {
     return `╠═𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖
 ╠═𝍖𝍖𝍖𝍖 𝔽𝕣𝕚𝕥𝕫 BOT 🍟
 ╠═𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖𝍖
@@ -33,5 +33,6 @@ export default function show({ owner, insta, prefix }: any, nome: string) {
 ╠   https://wa.me/5562986316077
 ╠  
 ╠═══════════════
-    `
+    `;
 }
+exports.default = show;

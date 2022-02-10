@@ -1,7 +1,7 @@
 import 'colors'
 
 export const msgs = {
-    'conn': () => console.log('\n-=-= Opened Connection -=-=\n'.rainbow),
+    'conn': () => console.log('\n-=-= BOT INICIALIZADO -=-=\n'.rainbow),
     'sent': (cmd: string, id: string, nome: string) =>
         console.log('*'.blue + ` comando ${cmd} { id: ${id}, nome: ${nome} }`.cyan),
     'error sent': (cmd: string, id: string, nome: string) =>
