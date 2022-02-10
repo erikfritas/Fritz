@@ -1,2 +1,9 @@
 # Fritz
-Fritz Whatsapp Bot
+Fritz Whatsapp Bot, by [@erikfritas](https://github.com/erikfritas)
+
+
+## TODO:
+- RPG Text Game
+- Truco
+- Jokenpo
+- Xadrez
