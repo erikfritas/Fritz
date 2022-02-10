@@ -1,0 +1,2 @@
+# Fritz
+Fritz Whatsapp Bot
