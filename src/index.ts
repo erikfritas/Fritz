@@ -59,7 +59,6 @@ async function connectToWhatsApp () {
                         '"... tem cheiro suvaco de alemão e tal...", '+opa,
                         '"... vira, agora é minha vez...", '+opa,
                         '"... caraio que cheiro de transeunte...", '+opa,
-                        '"... tá aqui no meu cu c quer ver?...", '+opa,
                         '"... e ainda tinha cara de paiaço kkk...", '+opa,
                         '"... cala boca sua paiaça...", '+opa,
                         '"... cala boca sua palafita...", '+opa,
