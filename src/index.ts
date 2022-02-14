@@ -9,8 +9,6 @@ const msgs = Msgs.msgs
 
 const config = JSON.parse(fs.readFileSync('./src/config.json', {encoding: 'utf8'}))
 
-const debugId = '556286316077-1600830393@g.us'
-
 async function connectToWhatsApp () {
     const { state, saveState } = useSingleFileAuthState('./auth_info_multi.json', P({ level: "warn" }))
     const sock = makeWASocket({
@@ -53,17 +51,9 @@ async function connectToWhatsApp () {
                     const opa = 'oops, não vi vc aí, oi'
                     const frases = [
                         'olá, como vai?', 'fala meu jovem', 'fala ze',
-                        'que oi que nada, meu nome é ze pikeno',
+                        'que oi que nada, meu nome é ze salada',
                         'que oi crocante, meu nome é ze pikante',
-                        'opa, fala meu jovem',
-                        '"... tem cheiro suvaco de alemão e tal...", '+opa,
-                        '"... vira, agora é minha vez...", '+opa,
-                        '"... caraio que cheiro de transeunte...", '+opa,
-                        '"... e ainda tinha cara de paiaço kkk...", '+opa,
-                        '"... cala boca sua paiaça...", '+opa,
-                        '"... cala boca sua palafita...", '+opa,
-                        '"... cala boca sua bananuda...", '+opa,
-                        '"... falei pro c, é cara de um cuzinho do outro...", '+opa
+                        'opa, fala meu jovem'
                     ];
                     sock.sendMessage(id,
                     { text: frases[Math.floor(Math.random() * frases.length)] })
